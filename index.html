@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- Цвет темы для строки статуса Safari — перекрывает Dynamic Island зону -->
+  <meta name="theme-color" content="#0a0a0a" />
+  <!-- ФИКС БЕЛЫХ ПОЛОС: Принудительно говорим Safari, что это темная тема -->
+  <meta name="color-scheme" content="dark" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>ShawaHUB — Самая вкусная шаурма</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- AMBIENT GLOW BACKGROUND -->
+  <div class="ambient-background" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+    <div class="noise-overlay"></div>
+  </div>
+
+  <!-- TOP BAR -->
+  <div class="topbar" role="banner">
+    <div class="topbar-inner">
+      <div class="topbar-addresses">
+        <span>📍 Ваш адрес 1</span>
+        <span class="sep">|</span>
+        <span>Ваш адрес 2</span>
+        <span class="sep">|</span>
+        <span>Ваш адрес 3</span>
+      </div>
+      <div class="topbar-hours">
+        <span>🕙 Ваши часы работы</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="ShawaHUB — на главную">
+        <span class="logo-text">Shawa<span class="logo-hub">HUB</span></span>
+      </a>
+
+      <div class="header-right">
+        <nav class="nav" aria-label="Меню разделов">
+          <button class="nav-btn active" data-tab="shawarma">Шаурма</button>
+          <button class="nav-btn" data-tab="drinks">Напитки</button>
+        </nav>
+
+        <div class="header-actions">
+          <div class="custom-select-wrapper" id="address-selector" role="combobox" aria-label="Выберите адрес">
+            <div class="custom-select-trigger" tabindex="0" role="button" aria-expanded="false">
+              <span class="custom-select-text">📍 Ваш адрес 1</span>
+              <div class="custom-select-icon" aria-hidden="true"></div>
+            </div>
+            <div class="custom-select-options" role="listbox">
+              <!-- data-value: замените на юзернеймы Telegram ваших операторов -->
+              <div class="custom-option selected" data-value="ТВОЙ_ЮЗЕРНЕЙМ_1" role="option">📍 Ваш адрес 1</div>
+              <div class="custom-option" data-value="ТВОЙ_ЮЗЕРНЕЙМ_2" role="option">📍 Ваш адрес 2</div>
+              <div class="custom-option" data-value="ТВОЙ_ЮЗЕРНЕЙМ_3" role="option">📍 Ваш адрес 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" aria-label="О нас">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Тот самый вкус</p>
+        <div class="hero-logo-massive" aria-hidden="true">
+          Shawa<span class="logo-hub">HUB</span>
+        </div>
+        <p class="hero-sub">Более 15 видов шаурмы с фирменными соусами. Свежее мясо, хрустящий лаваш и овощи каждый день.</p>
+        <button class="hero-cta" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Перейти к меню</button>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-badge" aria-hidden="true">🔥 Хит продаж</div>
+        <img src="orig.png" alt="Сочная шаурма ShawaHUB" class="hero-img-main" />
+        <div class="hero-stats" aria-label="Наши цифры">
+          <div class="stat"><span class="stat-num">16</span><span class="stat-label">Видов</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat"><span class="stat-num">3</span><span class="stat-label">Точки</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Работаем</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <main id="menu" class="menu-section">
+    <div class="menu-inner">
+
+      <!-- SHAWARMA TAB -->
+      <div class="tab-content active" id="tab-shawarma" role="tabpanel">
+        <h2 class="section-title">Меню шаурмы</h2>
+        <div class="cards-grid">
+
+          <!-- Card: ФИРМЕННАЯ -->
+          <article class="card card--featured">
+            <div class="card-badge">🔥 Хит продаж</div>
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Фирменная шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">ФИРМЕННАЯ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, св. огурец, помидор, лук, морковь по-корейски, марин. огурец, соус фирменный, соус горчичный, соус брусничный, базилик.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list" role="group" aria-label="Добавки">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn" aria-label="Заказать ФИРМЕННАЯ через Telegram">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: КЛАССИЧЕСКАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Классическая шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">КЛАССИЧЕСКАЯ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, св. огурец, помидор, лук, соус фирменный, орегано.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="8.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="13.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">8.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: ИТАЛЬЯНСКАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Итальянская шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">ИТАЛЬЯНСКАЯ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, помидор, перец болгарск., маслины, соус фирменный, соус карри.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: СЛИВОЧНАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Сливочная шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">СЛИВОЧНАЯ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, лук, помидор, кукуруза, плавленный сыр, соус барбекю, соус грибной, майонез.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="10.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="16.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">10.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: БАРБЕКЮ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Шаурма барбекю" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">БАРБЕКЮ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, помидор, маринов. огурец, лук, кукуруза, соус фирменный, соус барбекю.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: ШАУРМА В БЛИНЕ -->
+          <article class="card" data-base-price="9.00">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Шаурма в блине" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">В БЛИНЕ</h3>
+              <p class="card-desc">Блин, курица, свежий огурец, помидор, сыр, соус фирменный, соус сырный (соус на выбор).</p>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: СЫРНАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Сырная шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">СЫРНАЯ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, св. огурец, помидор, сыр, соус фирменный, соус сырный.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: ГРИБНАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Грибная шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">ГРИБНАЯ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, маринов. огурец, лук, помидор, шампиньоны маринов., соус фирменный, соус грибной.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: ОСТРАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Острая шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">ОСТРАЯ 🌶️</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, св. огурец, помидор, лук, халапеньо, соус фирменный, соус китайский (острый).</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: БЕЛОРУССКАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Белорусская шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">БЕЛОРУССКАЯ</h3>
+              <p class="card-desc">Лаваш, капуста микс, грудинка копчен., св. огурец, помидор, лук, маринов. огурец, соус фирменный, соус горчичный.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: ЦЕЗАРЬ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Шаурма Цезарь" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">ЦЕЗАРЬ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, св. огурец, помидор, перец болг., сыр, соус фирменный, соус цезарь.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: ДЕРЕВЕНСКАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Деревенская шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">ДЕРЕВЕНСКАЯ</h3>
+              <p class="card-desc">Лаваш, курица, картофель фри, марин. огурец, морковь по-корейски, лук, соус фирменный, соус барбекю, майонез.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="10.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="16.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">10.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: МЯСНАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Мясная шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">МЯСНАЯ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица ×2, сыр, соус фирменный, соус карри, соус барбекю.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="10.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="16.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">10.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: ТЕРИЯКИ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Шаурма терияки" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">ТЕРИЯКИ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, св. огурец, помидор, лук, кунжут, соус фирменный, соус терияки.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: ГАВАЙСКАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Гавайская шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">ГАВАЙСКАЯ 🍍</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, св. огурец, помидор, ананас, соус фирменный, соус кисло-сладкий.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card: ГОРЧИЧНАЯ -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="orig.png" alt="Горчичная шаурма" class="card-img-item" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">ГОРЧИЧНАЯ</h3>
+              <p class="card-desc">Лаваш, капуста микс, курица, св. огурец, помидор, лук, марин. огурец, соус фирменный, соус горчичный.</p>
+
+              <div class="size-picker" role="group" aria-label="Выберите размер">
+                <button class="size-btn active" data-price="9.00" data-weight="350 г">350 г</button>
+                <button class="size-btn" data-price="14.00" data-weight="600 г">600 г</button>
+              </div>
+
+              <div class="addons-picker">
+                <span class="addons-title">Добавить (по желанию):</span>
+                <div class="addons-list">
+                  <button class="addon-btn" data-price="2.00">Сыр (+2.00)</button>
+                  <button class="addon-btn" data-price="1.50">Халапеньо (+1.50)</button>
+                  <button class="addon-btn" data-price="2.50">Мясо (+2.50)</button>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">350 г</span>
+                  <span class="card-price">9.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- DRINKS TAB -->
+      <div class="tab-content" id="tab-drinks" role="tabpanel">
+        <h2 class="section-title">Напитки</h2>
+        <div class="cards-grid cards-grid--drinks">
+          <article class="card card--drink" data-base-price="3.00">
+            <div class="card-img-wrap">
+              <span class="card-emoji" aria-hidden="true">🥤</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name">Напиток</h3>
+              <p class="card-desc">Описание вашего напитка</p>
+              <div class="size-picker" role="group" aria-label="Выберите объём">
+                <button class="size-btn active" data-price="3.00" data-weight="0.5 л">0.5 л</button>
+                <button class="size-btn" data-price="4.50" data-weight="1.0 л">1.0 л</button>
+              </div>
+              <div class="card-footer">
+                <div class="price-col">
+                  <span class="card-weight">0.5 л</span>
+                  <span class="card-price">3.00 р.</span>
+                </div>
+                <button class="order-btn">Заказать</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <a href="#" class="logo" aria-label="ShawaHUB — на главную">
+          <span class="logo-text" style="font-size: 36px;">Shawa<span class="logo-hub">HUB</span></span>
+        </a>
+        <p class="footer-tagline">С заботой о вкусе</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Адреса</h4>
+          <p>Ваш адрес 1</p>
+          <p>Ваш адрес 2</p>
+          <p>Ваш адрес 3</p>
+        </div>
+        <div class="footer-col">
+          <h4>Часы работы</h4>
+          <p>Ваши часы работы</p>
+        </div>
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <p>Ваш телефон</p>
+          <p>Ваш email или соцсети</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ShawaHUB. Все права защищены.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
