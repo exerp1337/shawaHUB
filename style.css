@@ -2,6 +2,7 @@
    TOKENS
    =========================== */
 :root {
+  color-scheme: dark; /* ФИКС БЕЛЫХ ПОЛОС: Явно указываем браузеру темную тему */
   --bg:             #0a0a0a;
   --bg-card:        rgba(15, 15, 15, 0.65);
   --bg-card-hover:  rgba(22, 22, 22, 0.85);
@@ -30,12 +31,12 @@
 
 html {
   scroll-behavior: smooth;
-  background: #0a0a0a;
+  background: var(--bg);
 }
 
 body {
   /* Явный фон — не transparent, чтобы не было белых полос при overscroll */
-  background: #0a0a0a;
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 15px;
@@ -56,7 +57,7 @@ body {
   /* 100dvh учитывает реальную высоту viewport на мобильных */
   width: 100vw;
   height: calc(100dvh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
-  background: #0a0a0a;
+  background: var(--bg);
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
