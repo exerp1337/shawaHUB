@@ -197,7 +197,7 @@ body {
 }
 
 /* ===========================
-   HEADER RIGHT
+   HEADER RIGHT (НАВИГАЦИЯ И ВЫБОР АДРЕСА)
    =========================== */
 .header-right {
   display: flex;
@@ -206,33 +206,41 @@ body {
   margin-left: auto;
 }
 
+/* ФИКС СЕГМЕНТИРОВАННОГО КОНТРОЛА (МЕНЮ) */
 .nav {
   display: flex;
   align-items: center;
-  gap: 3px;
-  background: rgba(0,0,0,0.45);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-btn);
-  padding: 4px;
+  justify-content: center;
+  gap: 4px;
+  background: rgba(20, 20, 20, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 5px;
+  max-width: 320px; /* На десктопе не растягиваем слишком сильно */
 }
 .nav-btn {
+  flex: 1; /* РАВНОМЕРНО РАСПРЕДЕЛЯЕМ ШИРИНУ КНОПОК */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: transparent;
   border: none;
   color: var(--text-sub);
   font-family: var(--font-head);
   font-size: 14px;
   font-weight: 700;
-  padding: 9px 18px;
-  border-radius: 6px;
+  padding: 9px 20px;
+  border-radius: 8px; /* Внутренний радиус меньше внешнего для красивого вида */
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  text-align: center;
 }
 .nav-btn:hover { color: var(--text); }
 .nav-btn.active {
   background: var(--accent);
   color: #000;
-  box-shadow: 0 2px 10px var(--accent-glow);
+  box-shadow: 0 4px 14px var(--accent-glow);
 }
 .header-actions { position: relative; }
 
@@ -804,7 +812,13 @@ body {
   .topbar-inner { flex-direction: column; gap: 6px; text-align: center; }
   .header-inner { flex-direction: column; gap: 14px; align-items: stretch; }
   .header-right { flex-direction: column; width: 100%; margin-left: 0; }
-  .nav { max-width: 100%; width: 100%; }
+  
+  /* ФИКС НАВИГАЦИИ (Segmented Control) ДЛЯ МОБИЛЬНЫХ */
+  .nav { 
+    max-width: 100%; 
+    width: 100%; 
+  }
+  
   .custom-select-wrapper { width: 100%; }
   .hero { padding: 44px 20px 52px; }
   .cards-grid, .cards-grid--drinks { grid-template-columns: 1fr; }
