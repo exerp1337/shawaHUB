@@ -29,20 +29,20 @@
    =========================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ФИКС БЕЛЫХ ПОЛОС: задаем черный фон основному корню документа */
 html {
   scroll-behavior: smooth;
-  background: var(--bg);
+  background-color: var(--bg);
 }
 
+/* ПРОЗРАЧНЫЙ BODY: чтобы видеть анимированный фон под ним */
 body {
-  /* Явный фон — не transparent, чтобы не было белых полос при overscroll */
-  background: var(--bg);
+  background-color: transparent; 
   color: var(--text);
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.6;
   min-height: 100vh;
-  /* Разрешаем Safari корректно рендерить overscroll */
   overscroll-behavior-y: none;
 }
 
@@ -51,13 +51,12 @@ body {
    =========================== */
 .ambient-background {
   position: fixed;
-  /* Уходим выше top:0 чтобы перекрыть зону Dynamic Island */
-  top: calc(-1 * env(safe-area-inset-top));
-  left: calc(-1 * env(safe-area-inset-left));
-  /* 100dvh учитывает реальную высоту viewport на мобильных */
-  width: 100vw;
-  height: calc(100dvh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
-  background: var(--bg);
+  /* Жестко привязываем к краям экрана - это надежнее чем 100vh */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg); /* Вот он - наш настоящий матово-черный фон */
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
@@ -99,7 +98,7 @@ body {
 
 .noise-overlay {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0; left: 0; right: 0; bottom: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   opacity: 0.035;
   pointer-events: none;
@@ -127,7 +126,6 @@ body {
 .topbar {
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
-  /* Дополнительный отступ сверху под Dynamic Island / notch */
   padding: calc(7px + env(safe-area-inset-top)) 0 7px;
   border-bottom: 1px solid var(--border);
 }
@@ -173,7 +171,6 @@ body {
 }
 .logo { text-decoration: none; flex-shrink: 0; }
 
-/* ─── LOGO — стиль PornHub ─── */
 .logo-text {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 30px;
