@@ -2,11 +2,11 @@
    TOKENS (Тёмная тема, стилистика PH)
    =========================== */
 :root {
-  --bg:          #000000;
-  --bg-card:     #111111;
-  --bg-card-hover: #1A1A1A;
-  --bg-featured: linear-gradient(145deg, #111, #1a1a1a);
-  --border:      #333333;
+  --bg:          #070707; /* Глубокий, матовый черный */
+  --bg-card:     rgba(17, 17, 17, 0.6); /* Полупрозрачные карточки, чтобы видеть фон */
+  --bg-card-hover: rgba(26, 26, 26, 0.8);
+  --bg-featured: linear-gradient(145deg, rgba(17,17,17,0.8), rgba(26,26,26,0.9));
+  --border:      rgba(255, 255, 255, 0.08); /* Мягкие бордеры */
   --accent:      #FF9900;
   --accent-dim:  rgba(255, 153, 0, 0.15);
   --accent-glow: rgba(255, 153, 0, 0.4);
@@ -16,7 +16,7 @@
   --yellow:      #FF9900;
   --radius-card: 16px;
   --radius-btn:  8px;
-  --shadow-card: 0 4px 20px rgba(0,0,0,0.8);
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.5);
   --shadow-glow: 0 8px 32px rgba(255, 153, 0, 0.2);
   --font-head:   'Roboto', sans-serif;
   --font-body:   'Roboto', sans-serif;
@@ -30,7 +30,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background: transparent; /* Фон обеспечивается блоком .ambient-background */
   color: var(--text);
   font-family: var(--font-body);
   font-size: 15px;
@@ -39,10 +39,99 @@ body {
 }
 
 /* ===========================
+   AMBIENT GLOW BACKGROUND
+   =========================== */
+.ambient-background {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100vw; 
+  height: 100vh;
+  background: var(--bg);
+  z-index: -1; /* Держим строго позади всего контента */
+  overflow: hidden;
+  pointer-events: none; /* Пропускаем клики насквозь */
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  will-change: transform; /* Включаем аппаратное ускорение */
+}
+
+/* Главный оранжевый блик */
+.orb-1 {
+  width: 40vw; 
+  height: 40vw;
+  min-width: 300px; 
+  min-height: 300px;
+  background: #FF9900;
+  top: -10%; 
+  left: -10%;
+  opacity: 0.15;
+  animation: floatOrb1 25s infinite ease-in-out alternate;
+}
+
+/* Глубокий ржаво-янтарный блик */
+.orb-2 {
+  width: 50vw; 
+  height: 50vw;
+  min-width: 350px; 
+  min-height: 350px;
+  background: #CC5500;
+  bottom: -20%; 
+  right: -10%;
+  opacity: 0.18;
+  animation: floatOrb2 30s infinite ease-in-out alternate;
+}
+
+/* Дополнительный акцент */
+.orb-3 {
+  width: 35vw; 
+  height: 35vw;
+  min-width: 250px; 
+  min-height: 250px;
+  background: #FF6B00;
+  top: 40%; 
+  left: 50%;
+  opacity: 0.12;
+  animation: floatOrb3 28s infinite ease-in-out alternate;
+}
+
+/* Фрактальный шум для матовости */
+.noise-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+@keyframes floatOrb1 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(20vw, 15vh, 0) scale(1.2); }
+  100% { transform: translate3d(-10vw, 30vh, 0) scale(0.9); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-25vw, -20vh, 0) scale(1.1); }
+  100% { transform: translate3d(15vw, -35vh, 0) scale(1); }
+}
+
+@keyframes floatOrb3 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-30vw, 20vh, 0) scale(0.8); }
+  100% { transform: translate3d(-10vw, -10vh, 0) scale(1.3); }
+}
+
+
+/* ===========================
    TOP BAR
    =========================== */
 .topbar {
-  background: #000000;
+  background: rgba(0, 0, 0, 0.4);
   color: #fff;
   padding: 8px 0;
   border-bottom: 1px solid var(--border);
@@ -73,9 +162,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(7, 7, 7, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border);
 }
 .header-inner {
@@ -123,7 +212,7 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
-  background: #111;
+  background: rgba(0,0,0,0.4);
   border: 1px solid var(--border);
   border-radius: var(--radius-btn);
   padding: 5px;
@@ -158,7 +247,7 @@ body {
   width: 200px;
 }
 .custom-select-trigger {
-  background: #111;
+  background: rgba(0,0,0,0.4);
   color: var(--text-sub);
   font-family: var(--font-body);
   font-size: 14px;
@@ -240,17 +329,6 @@ body {
   padding: 80px 24px;
   overflow: hidden;
   position: relative;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(255, 153, 0, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
-  z-index: -1;
 }
 .hero-inner {
   max-width: 1240px;
@@ -364,8 +442,8 @@ body {
 .hero-stats {
   display: flex;
   align-items: center;
-  background: rgba(17, 17, 17, 0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   padding: 20px 32px;
@@ -446,6 +524,7 @@ body {
   transition: var(--transition);
   box-shadow: var(--shadow-card);
   position: relative;
+  backdrop-filter: blur(12px); /* Добавил легкий блюр под карточки */
 }
 .card:hover {
   transform: translateY(-6px);
@@ -530,7 +609,7 @@ body {
   margin-top: auto;
 }
 .size-btn {
-  background: #000;
+  background: rgba(0,0,0,0.5);
   border: 1px solid var(--border);
   color: var(--text-sub);
   font-family: var(--font-body);
@@ -569,7 +648,7 @@ body {
   gap: 6px;
 }
 .addon-btn {
-  background: #000;
+  background: rgba(0,0,0,0.5);
   border: 1px dashed var(--border);
   color: var(--text-sub);
   font-family: var(--font-body);
@@ -639,7 +718,8 @@ body {
    FOOTER
    =========================== */
 .footer {
-  background: #050505;
+  background: rgba(7, 7, 7, 0.8);
+  backdrop-filter: blur(16px);
   border-top: 1px solid var(--border);
   padding: 64px 24px 0;
 }
